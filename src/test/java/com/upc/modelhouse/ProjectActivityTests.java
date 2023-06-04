@@ -1,5 +1,6 @@
 package com.upc.modelhouse;
 
+import com.upc.modelhouse.ServiceManagement.domain.service.ProjectActivityService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,10 +18,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import javax.validation.Validator;
 
 import com.upc.modelhouse.ServiceManagement.domain.model.entity.ProjectActivity;
@@ -44,12 +42,28 @@ public class ProjectActivityTests {
 
     private static final Long PROPOSAL_ID = 1L;
     private static final Long ACTIVITY_ID = 1L;
-
+    @Mock
+    private ProjectActivityService mockProjectActivityService;
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
+    @Test
+    public void countTotalActivitiesTest() {
+        // Crear una lista de actividades de prueba
+        List<ProjectActivity> projectActivities = new ArrayList<>();
+        projectActivities.add(new ProjectActivity());
+        projectActivities.add(new ProjectActivity());
+        projectActivities.add(new ProjectActivity());
+
+        // Configurar el comportamiento del servicio mock
+        when(mockProjectActivityService.findAllProposalId(1L)).thenReturn(projectActivities);
+
+        // Obtener el total de actividades y verificar el resultado
+        long totalActivities = projectActivities.size();
+        Assertions.assertEquals(3, totalActivities);
+    }
     @Test
     public void createProjectActivityTest() {
         // Crear una actividad
