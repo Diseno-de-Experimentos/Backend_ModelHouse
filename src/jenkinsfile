@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    tools{
+        maven 'Maven 3.9.1'
+    }
+    parameters {
+        string(name: 'container_name', defaultValue: 'web_page', description: 'SprintBoot container name')
+        string(name: 'image_name', defaultValue: 'web_img', description: 'SprintBoot image name')
+        string(name: 'image_tag', defaultValue: 'latest', description: 'SprintBoot image tag')
+        string(name: 'container_port', defaultValue: '80', description: 'Port with the container')
+    }
+    latest{
+        stage('install'){
+            steps{
+                git branch: 'main', url: 'https://github.com/Diseno-de-Experimentos/Backend_ModelHouse.git'
+                dir('Backend_ModelHouse'){
+                    sh 'mvn install'
+                }
+            }
+        }
+        stage('build'){
+            steps{
+                dir('Backend_ModelHouse'){
+                    sh 'mvn run test'
+                }
+            }
+        }
+    }
+}
