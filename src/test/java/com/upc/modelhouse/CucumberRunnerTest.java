@@ -7,8 +7,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "classpath:features/",
-        glue = { "com.upc.modelhouse/cucumber.glue"}
+        features = "classpath:features",
+        glue = { "com.upc.modelhouse/cucumberglue"},
+        plugin = {"pretty", "html:target/cucumber-reports"}
 )
 public class CucumberRunnerTest {
 }

@@ -21,11 +21,10 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Objects;
 
-
 @Log4j2
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @CucumberContextConfiguration
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class ProjectTest {
     @LocalServerPort
     private int port;
@@ -63,7 +62,7 @@ public class ProjectTest {
     }
     @When("^I sending project to be published with title (.*), description (.*) and image (.*)$")
     public void i_sending_project(String title, String description, String image){
-        String url = postUrl + ":" + port + "/api/v1/project/businessProfile/1";
+        String url = postUrl + ":" + port + "/api/v1/project/businessProfile/" + businessId;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "Bearer " + token);
@@ -90,3 +89,4 @@ public class ProjectTest {
     }
 
 }
+
