@@ -38,8 +38,8 @@ public class ProjectTest {
     public void i_am_authenticated_in_the_app(){
         String url = postUrl + ":" + port + "/api/v1/auth/login";
         AuthCredentialsResource credentials = new AuthCredentialsResource();
-        credentials.setEmailAddress("jose@gmail.com");
-        credentials.setPassword("@#holita");
+        credentials.setEmailAddress("rayito@gmail.com");
+        credentials.setPassword("#$R12345");
 
         ResponseEntity<UserResource> response = restTemplate.postForEntity(url, credentials, UserResource.class);
         token = Objects.requireNonNull(response.getBody()).getToken();

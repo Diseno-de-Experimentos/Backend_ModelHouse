@@ -37,8 +37,8 @@ public class RequestTest {
     public void i_am_the_representative_who_logged_in_on_the_app(){
         String url = postUrl + ":" + port + "/api/v1/auth/login";
         AuthCredentialsResource credentials = new AuthCredentialsResource();
-        credentials.setEmailAddress("jose@gmail.com");
-        credentials.setPassword("@#holita");
+        credentials.setEmailAddress("rayito@gmail.com");
+        credentials.setPassword("#$R12345");
 
         ResponseEntity<UserResource> res = restTemplate.postForEntity(url, credentials, UserResource.class);
         token = Objects.requireNonNull(res.getBody()).getToken();
@@ -58,7 +58,7 @@ public class RequestTest {
     }
     @When("^I receive the service request with description (.*)$")
     public void i_receive_the_service_request(String description){
-        String url = postUrl + ":" + port + "/api/v1/request/user/1/business/" + businessId;
+        String url = postUrl + ":" + port + "/api/v1/request/user/2/business/" + businessId;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "Bearer " + token);
