@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools{
-        maven 'Maven 3.9.1'
+        maven 'MAVEN_3.9.1'
     }
     parameters {
         string(name: 'container_name', defaultValue: 'web_page', description: 'SprintBoot container name')
