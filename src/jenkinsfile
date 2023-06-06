@@ -8,9 +8,7 @@ pipeline {
     stages {
         stage('test') {
             steps {
-                dir("src") {
-                    bat 'mvn clean compile test'
-                }
+                bat 'mvn clean compile test'
             }
         }
         stage('Build Application') {
