@@ -18,10 +18,5 @@ pipeline {
                 echo 'mvn clean install -Dmaven.test.skip=true'
             }
         }
-        stage('Deploy Application') {
-            steps {
-                echo 'Deploying Application'
-            }
-        }
     }
 }
