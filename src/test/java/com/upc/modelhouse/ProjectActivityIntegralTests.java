@@ -11,7 +11,7 @@ import com.upc.modelhouse.ServiceManagement.domain.model.entity.ProjectResource;
 import com.upc.modelhouse.ServiceManagement.domain.model.entity.Proposal;
 import com.upc.modelhouse.ServiceManagement.domain.model.entity.Request;
 
-public class ProjectActivityIntegral {
+public class ProjectActivityIntegralTests {
 
     // REQUEST AND PROPOSAL
     @Test
